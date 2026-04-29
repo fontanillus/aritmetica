@@ -66,11 +66,11 @@
     <div class="w-full md:w-2/3">
         <p class="flex">
             <label class="flex-1" for="numeroa">Escribe un número entero</label>
-            <input class="flex-1 border-amber-950" type="number" id="numeroa">
+            <input class="flex-1 border-amber-950" type="number" id="numeroa" step="1">
         </p>
         <p class="flex">
             <label class="flex-1" for="numerob">Escribe otro número entero</label>
-            <input class="flex-1 border-amber-950" type="number" id="numerob">
+            <input class="flex-1 border-amber-950" type="number" id="numerob" step="1">
         </p>
         <p><button class="bg-slate-700 text-white font-bold px-5 py-2 rounded-md transition-all duration-200 hover:bg-amber-700 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-amber-400" id="btnAritmetica">Aritmética</button></p>
     </div>
@@ -85,11 +85,21 @@
 
     <script>
         document.getElementById('btnAritmetica').addEventListener('click', () => {
-            const a = Number(document.getElementById('numeroa').value);
-            const b = Number(document.getElementById('numerob').value);
+        const valorA = document.getElementById('numeroa').value.trim();
+        const valorB = document.getElementById('numerob').value.trim();
+        const numeroA = Number(valorA);
+        const numeroB = Number(valorB);
+
+        if (!Number.isInteger(numeroA) || !Number.isInteger(numeroB)) {
+          alert('Solo se permiten números enteros');
+          return;
+        }
+
+        const a = parseInt(valorA, 10);
+        const b = parseInt(valorB, 10);
 
             if (isNaN(a) || isNaN(b)) {
-                alert('Por favor ingresa dos números válidos');
+          alert('Por favor ingresa dos números enteros válidos');
                 return;
             }
 
