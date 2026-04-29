@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aritmetica</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4">
+    </script>
+
+    <style type="text/tailwindcss">
+        @import "tailwindcss"; 
+  
+      @layer base {
+        p, h1, h2, h3 {
+          @apply mb-2 leading-relaxed text-gray-700
+        }
+        h1, h2, h3 {
+          @apply mt-2 font-bold text-slate-500
+        }
+        input {
+          @apply rounded-sm border border-slate-300 text-slate-400 font-mono
+        }
+        input, label {
+          @apply inline-block flex-1 pl-4
+        }
+        button {
+          @apply rounded-md shadow-xs border-2 border-slate-400 px-4 py-[0.5] my-1
+        }
+        details {
+          @apply mb-4 pb-4 border-b-slate-700 border-b
+        }
+        summary {
+          @apply bg-slate-700 text-white font-bold
+        }
+        code {
+          @apply text-blue-800
+        }
+        ul {
+          list-style-type: circle;
+          @apply ml-4
+        }
+      }
+    </style>
+</head>
+
+<body class="bg-amber-50 w-full md:w-3/5 mx-auto px-4">
+    <div class="flex items-center justify-center gap-2 md:gap-3">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-8 w-8 md:h-10 md:w-10 text-slate-700"
+            fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <rect x="5" y="2.5" width="14" height="19" rx="2"></rect>
+            <rect x="8" y="5.5" width="8" height="3" rx="0.5"></rect>
+            <circle cx="9" cy="12" r="0.8"></circle>
+            <circle cx="12" cy="12" r="0.8"></circle>
+            <circle cx="15" cy="12" r="0.8"></circle>
+            <circle cx="9" cy="15" r="0.8"></circle>
+            <circle cx="12" cy="15" r="0.8"></circle>
+            <circle cx="15" cy="15" r="0.8"></circle>
+            <rect x="8" y="17" width="8" height="2.5" rx="0.5"></rect>
+        </svg>
+        <h1 class="text-4xl font-bold text-center text-slate-700">CALCULADORA</h1>
+    </div>
+    <hr>
+    <h2 class="text-2xl font-semibold text-slate-600">Por ejemplo, para ver los distintos resultados rellena los
+        siguientes campos:</h2>
+    <div class="w-full md:w-2/3">
+        <p class="flex">
+            <label class="flex-1" for="numeroa">Escribe un número entero</label>
+            <input class="flex-1 border-amber-950" type="number" id="numeroa">
+        </p>
+        <p class="flex">
+            <label class="flex-1" for="numerob">Escribe otro número entero</label>
+            <input class="flex-1 border-amber-950" type="number" id="numerob">
+        </p>
+        <p><button class="bg-slate-700 text-white font-bold px-5 py-2 rounded-md transition-all duration-200 hover:bg-amber-700 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-amber-400" id="btnAritmetica">Aritmética</button></p>
+    </div>
+    <hr>
+    <h2 class="text-2xl font-semibold text-slate-600">Resultados</h2>
+    <div id="resultados" class="hidden">
+        <p>La suma de <span id="a"></span> + <span id="b"></span> es <span id="suma"></span></p>
+        <p>La resta de <span id="a2"></span> - <span id="b2"></span> es <span id="resta"></span></p>
+        <p>La multiplicación de <span id="a3"></span> * <span id="b3"></span> es <span id="multiplicacion"></span></p>
+        <p>La división de <span id="a4"></span> / <span id="b4"></span> es <span id="division"></span></p>
+    </div>
+
+    <script>
+        document.getElementById('btnAritmetica').addEventListener('click', () => {
+            const a = Number(document.getElementById('numeroa').value);
+            const b = Number(document.getElementById('numerob').value);
+
+            if (isNaN(a) || isNaN(b)) {
+                alert('Por favor ingresa dos números válidos');
+                return;
+            }
+
+            const resultados = {
+                suma: a + b,
+                resta: a - b,
+                multiplicacion: a * b,
+                division: b !== 0 ? a / b : 'No se puede dividir entre 0'
+            };
+
+            for (const key in resultados) {
+                document.getElementById(key).textContent = resultados[key];
+            }
+
+            const pares = [['a', 'b'], ['a2', 'b2'], ['a3', 'b3'], ['a4', 'b4']];
+            pares.forEach(([ida, idb]) => {
+                document.getElementById(ida).textContent = a;
+                document.getElementById(idb).textContent = b;
+            });
+
+            document.getElementById('resultados').classList.remove('hidden');
+        });
+    </script>
+
+
+
+
+</body>
+
+</html>
