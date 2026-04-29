@@ -85,10 +85,18 @@
         document.getElementById('btnAritmetica').addEventListener('click', () => {
             const valorA = document.getElementById('numeroa').value.trim();
             const valorB = document.getElementById('numerob').value.trim();
+
+        if (valorA === '' || valorB === '') {
+          console.warn('Faltan datos: completa ambos numeros.');
+          alert('Completa los dos campos con numeros enteros');
+          return;
+        }
+
             const a = Number(valorA);
             const b = Number(valorB);
 
             if (!Number.isInteger(a) || !Number.isInteger(b)) {
+          console.warn('Entrada invalida:', { valorA, valorB });
                 alert('Solo se permiten números enteros');
                 return;
             }
@@ -99,6 +107,9 @@
                 multiplicacion: a * b,
                 division: b !== 0 ? a / b : 'No se puede dividir entre 0'
             };
+
+            console.log('Operacion ejecutada con:', { a, b });
+            console.table(resultados);
 
             for (const key in resultados) {
                 document.getElementById(key).textContent = resultados[key];
