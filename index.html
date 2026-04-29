@@ -9,8 +9,6 @@
     </script>
 
     <style type="text/tailwindcss">
-        @import "tailwindcss"; 
-  
       @layer base {
         p, h1, h2, h3 {
           @apply mb-2 leading-relaxed text-gray-700
@@ -85,21 +83,13 @@
 
     <script>
         document.getElementById('btnAritmetica').addEventListener('click', () => {
-        const valorA = document.getElementById('numeroa').value.trim();
-        const valorB = document.getElementById('numerob').value.trim();
-        const numeroA = Number(valorA);
-        const numeroB = Number(valorB);
+            const valorA = document.getElementById('numeroa').value.trim();
+            const valorB = document.getElementById('numerob').value.trim();
+            const a = Number(valorA);
+            const b = Number(valorB);
 
-        if (!Number.isInteger(numeroA) || !Number.isInteger(numeroB)) {
-          alert('Solo se permiten números enteros');
-          return;
-        }
-
-        const a = parseInt(valorA, 10);
-        const b = parseInt(valorB, 10);
-
-            if (isNaN(a) || isNaN(b)) {
-          alert('Por favor ingresa dos números enteros válidos');
+            if (!Number.isInteger(a) || !Number.isInteger(b)) {
+                alert('Solo se permiten números enteros');
                 return;
             }
 
