@@ -4,145 +4,366 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aritmetica</title>
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4">
-  </script>
+
+  <title>Aritmética</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
   <style type="text/tailwindcss">
+    @import "tailwindcss";
+
     @layer base {
-        p, h1, h2, h3 {
-          @apply mb-2 leading-relaxed text-gray-700
-        }
-        h1, h2, h3 {
-          @apply mt-2 font-bold text-slate-500
-        }
-        input {
-          @apply rounded-sm border border-slate-300 text-slate-400 font-mono
-        }
-        input, label {
-          @apply inline-block flex-1 pl-4
-        }
-        button {
-          @apply rounded-md shadow-xs border-2 border-slate-400 px-4 py-[0.5] my-1
-        }
-        details {
-          @apply mb-4 pb-4 border-b-slate-700 border-b
-        }
-        summary {
-          @apply bg-slate-700 text-white font-bold
-        }
-        code {
-          @apply text-blue-800
-        }
-        ul {
-          list-style-type: circle;
-          @apply ml-4
-        }
+
+      body {
+        @apply bg-amber-50 text-slate-700;
       }
-    </style>
+
+      h1,
+      h2,
+      h3 {
+        @apply mt-2 mb-3 font-bold text-slate-700 leading-tight;
+      }
+
+      p {
+        @apply mb-2 leading-relaxed text-slate-700;
+      }
+
+      label {
+        @apply block font-medium text-slate-700;
+      }
+
+      input {
+        @apply w-full rounded-md border border-slate-300 px-3 py-2 font-mono text-slate-700 outline-none transition focus:border-amber-600 focus:ring-2 focus:ring-amber-300;
+      }
+
+      button {
+        @apply rounded-md border-2 border-slate-400 px-4 py-1 shadow-sm transition;
+      }
+
+      hr {
+        @apply my-6 border-slate-300;
+      }
+
+      details {
+        @apply mb-4 border-b border-b-slate-700 pb-4;
+      }
+
+      summary {
+        @apply bg-slate-700 font-bold text-white;
+      }
+
+      code {
+        @apply text-blue-800;
+      }
+
+      ul {
+        list-style-type: circle;
+        @apply ml-4;
+      }
+
+    }
+
+    @layer components {
+
+      .form-row {
+        @apply flex flex-col gap-2 md:flex-row md:items-center;
+      }
+
+      .form-row label {
+        @apply md:w-1/2;
+      }
+
+      .form-row input {
+        @apply md:w-1/2;
+      }
+
+    }
+  </style>
 </head>
 
-<body class="bg-amber-50 w-full md:w-3/5 mx-auto px-4">
-  <div class="flex items-center justify-center gap-2 md:gap-3">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-8 w-8 md:h-10 md:w-10 text-slate-700"
-      fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+<body class="mx-auto max-w-4xl px-4 py-6">
+
+  <!-- Cabecera -->
+  <div class="flex items-center justify-center gap-3">
+
+    <!-- Icono -->
+    <svg xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      class="h-8 w-8 text-slate-700 md:h-10 md:w-10"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      aria-hidden="true">
+
       <rect x="5" y="2.5" width="14" height="19" rx="2"></rect>
+
       <rect x="8" y="5.5" width="8" height="3" rx="0.5"></rect>
+
       <circle cx="9" cy="12" r="0.8"></circle>
       <circle cx="12" cy="12" r="0.8"></circle>
       <circle cx="15" cy="12" r="0.8"></circle>
+
       <circle cx="9" cy="15" r="0.8"></circle>
       <circle cx="12" cy="15" r="0.8"></circle>
       <circle cx="15" cy="15" r="0.8"></circle>
+
       <rect x="8" y="17" width="8" height="2.5" rx="0.5"></rect>
+
     </svg>
-    <h1 class="text-4xl text-center">CALCULADORA</h1>
+
+    <!-- Título -->
+    <h1 class="text-center text-3xl md:text-4xl">
+      CALCULADORA
+    </h1>
+
   </div>
+
   <hr>
-  <h2 class="text-2xl">Por ejemplo, para ver los distintos resultados rellena los
-    siguientes campos:</h2>
+
+  <!-- Explicación -->
+  <h2 class="text-xl md:text-2xl">
+    Para ver los distintos resultados, rellena los siguientes campos:
+  </h2>
+
+  <!-- Formulario -->
   <div class="w-full md:w-2/3">
-    <p class="flex">
-      <label class="flex-1" for="numeroa">Escribe un número entero</label>
-      <input class="flex-1" type="number" id="numeroa" step="1">
+
+    <p class="form-row">
+      <label for="numeroa">
+        Escribe un número entero
+      </label>
+
+      <input
+        type="number"
+        id="numeroa"
+        step="1">
     </p>
-    <p class="flex">
-      <label class="flex-1" for="numerob">Escribe otro número entero</label>
-      <input class="flex-1" type="number" id="numerob" step="1">
+
+    <p class="form-row">
+      <label for="numerob">
+        Escribe otro número entero
+      </label>
+
+      <input
+        type="number"
+        id="numerob"
+        step="1">
     </p>
-    <p><button
-        class="bg-slate-700 text-white font-bold px-5 py-2 transition-all duration-200 hover:bg-amber-700 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-amber-400"
-        id="btnAritmetica">Aritmética</button></p>
+
+    <!-- Botón -->
+    <p class="mt-4">
+
+      <button
+        id="btnAritmetica"
+        class="bg-slate-700 px-5 py-2 font-bold text-white hover:-translate-y-0.5 hover:bg-amber-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-amber-400 active:translate-y-0">
+
+        Aritmética
+
+      </button>
+
+    </p>
+
   </div>
+
   <hr>
-  <h2 class="text-2xl">Resultados</h2>
-  <div id="resultados" class="hidden">
-    <p>La suma de <span id="a"></span> + <span id="b"></span> es <span id="suma"></span></p>
-    <p>La resta de <span id="a2"></span> - <span id="b2"></span> es <span id="resta"></span></p>
-    <p>La multiplicación de <span id="a3"></span> * <span id="b3"></span> es <span id="multiplicacion"></span></p>
-    <p>La división de <span id="a4"></span> / <span id="b4"></span> es <span id="division"></span></p>
+
+  <!-- Resultados -->
+  <h2 class="text-xl md:text-2xl">
+    Resultados
+  </h2>
+
+  <div
+    id="resultados"
+    aria-live="polite"
+    class="hidden mt-4 space-y-2 rounded-lg bg-white p-4 shadow-sm">
+
+    <p>
+      La suma de
+      <span id="a"></span>
+      +
+      <span id="b"></span>
+      es
+      <span id="suma"></span>
+    </p>
+
+    <p>
+      La resta de
+      <span id="a2"></span>
+      -
+      <span id="b2"></span>
+      es
+      <span id="resta"></span>
+    </p>
+
+    <p>
+      La multiplicación de
+      <span id="a3"></span>
+      *
+      <span id="b3"></span>
+      es
+      <span id="multiplicacion"></span>
+    </p>
+
+    <p>
+      La división de
+      <span id="a4"></span>
+      /
+      <span id="b4"></span>
+      es
+      <span id="division"></span>
+    </p>
+
   </div>
 
   <script>
-    document.getElementById('btnAritmetica').addEventListener('click', () => {
-      const valorA = document.getElementById('numeroa').value.trim();
-      const valorB = document.getElementById('numerob').value.trim();
 
-      console.group('Calculo aritmetico');
-      console.info('Valores recibidos:', { valorA, valorB });
+    // BOTÓN
 
-      if (valorA === '' || valorB === '') {
-        console.error('Faltan datos: completa ambos numeros.');
-        alert('Completa los dos campos con numeros enteros');
+    document
+      .getElementById("btnAritmetica")
+      .addEventListener("click", calcularAritmetica);
+
+    // FUNCIÓN PRINCIPAL
+
+    function calcularAritmetica() {
+
+      const valorA =
+        document.getElementById("numeroa")
+          .value
+          .trim();
+
+      const valorB =
+        document.getElementById("numerob")
+          .value
+          .trim();
+
+      console.group("Cálculo aritmético");
+
+      console.info(
+        "Valores recibidos:",
+        { valorA, valorB }
+      );
+
+      // VALIDAR CAMPOS VACÍOS
+
+      if (valorA === "" || valorB === "") {
+
+        console.error(
+          "Faltan datos: completa ambos números."
+        );
+
+        alert(
+          "Completa los dos campos con números enteros."
+        );
+
         console.groupEnd();
+
         return;
+
       }
+
+      // CONVERTIR A NÚMERO
 
       const a = Number(valorA);
+
       const b = Number(valorB);
 
-      console.info('Valores convertidos:', { a, b });
+      console.info(
+        "Valores convertidos:",
+        { a, b }
+      );
 
-      if (!Number.isInteger(a) || !Number.isInteger(b)) {
-        console.error('Entrada invalida: solo enteros.', { valorA, valorB });
-        alert('Solo se permiten números enteros');
+      // VALIDAR ENTEROS
+
+      if (
+        !Number.isInteger(a) ||
+        !Number.isInteger(b)
+      ) {
+
+        console.error(
+          "Entrada inválida: solo enteros.",
+          { valorA, valorB }
+        );
+
+        alert(
+          "Solo se permiten números enteros."
+        );
+
         console.groupEnd();
+
         return;
+
       }
+
+      // RESULTADOS
 
       const resultados = {
+
         suma: a + b,
+
         resta: a - b,
+
         multiplicacion: a * b,
-        division: b !== 0 ? a / b : 'No se puede dividir entre 0'
+
+        division:
+          b !== 0
+            ? a / b
+            : "No se puede dividir entre 0"
+
       };
 
-      console.log('Operacion ejecutada con:', { a, b });
+      console.log(
+        "Operación ejecutada con:",
+        { a, b }
+      );
+
       console.table(resultados);
-      console.log('Suma:', resultados.suma);
-      console.log('Resta:', resultados.resta);
-      console.log('Multiplicacion:', resultados.multiplicacion);
-      console.log('Division:', resultados.division);
+
+      // MOSTRAR RESULTADOS
 
       for (const key in resultados) {
-        document.getElementById(key).textContent = resultados[key];
+
+        document.getElementById(key)
+          .textContent = resultados[key];
+
       }
 
-      const pares = [['a', 'b'], ['a2', 'b2'], ['a3', 'b3'], ['a4', 'b4']];
+      // MOSTRAR NÚMEROS
+
+      const pares = [
+        ["a", "b"],
+        ["a2", "b2"],
+        ["a3", "b3"],
+        ["a4", "b4"]
+      ];
+
       pares.forEach(([ida, idb]) => {
-        document.getElementById(ida).textContent = a;
-        document.getElementById(idb).textContent = b;
+
+        document.getElementById(ida)
+          .textContent = a;
+
+        document.getElementById(idb)
+          .textContent = b;
+
       });
 
-      document.getElementById('resultados').classList.remove('hidden');
-      console.info('Resultados mostrados en pantalla.');
+      // MOSTRAR BLOQUE
+
+      document
+        .getElementById("resultados")
+        .classList.remove("hidden");
+
+      console.info(
+        "Resultados mostrados en pantalla."
+      );
+
       console.groupEnd();
-    });
+
+    }
+
   </script>
-
-
-
 
 </body>
 
 </html>
+```
